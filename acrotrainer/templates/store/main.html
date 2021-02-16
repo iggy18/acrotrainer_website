@@ -18,9 +18,9 @@
 
     <body>
     
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'store' %}">Acrotrainer</a>
+    <a class="navbar-brand" href="{% url 'store' %}"><img id="logo" src={% static 'images/logo.png' %}/></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,19 +28,19 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'store' %}">Lessons</a>
+        </li>
       </ul>
         <div class="form-inline my-2 my-lg-0">
-          <a href="#" class="btn btn-secondary">Login</a>
-          
-          <a href={% url 'cart' %}>
-            <i class="fas fa fa-shopping-cart fa-4x"></i>
+          <a href="#" class="btn btn-secondary">
+            Login
           </a>
-          <p class="total">0</p>
+          <a href={% url 'cart' %}>
+            <i class="fas fa fa-shopping-cart fa-3x"></i>
+          </a>
+            <p class="quantity">0</p>
+        </div>
     </div>
-  </div>
 </nav>
-    <hr>
-
     <div class="container"> 
         {% block content %}
 
