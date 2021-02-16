@@ -1,23 +1,37 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-    <h3>store</h3>
+    <h3 class="page-title">Lessons</h3>
+
     <div class="row">
         <div class="col-lg-4">
             <div class="box-element product">
-                <img src="one.jgp"/>
+                <img class="store-image" src="{% static 'images/one.jpg' %}"/>
+                <h6 class = "product-title"><strong>Recorded Classes</strong></h6>
+                <button class="btn btn-outline-secondary add-btn">add to cart</button>
+                <a class="btn btn-outline-success" href="#">view</a>
+                <h4 class="store-price">$99</h4>
             </div>
         </div>
 
         <div class="col-lg-4">
             <div class="box-element product">
-                <img src="two.jgp"/>
+                <img class="store-image" src="{% static 'images/two.jpg' %}"/>
+                <h6 class = "product-title"><strong>One on One classes via Skype</strong></h6>
+                <button class="btn btn-outline-secondary add-btn">add to cart</button>
+                <a class="btn btn-outline-success" href="#">view</a>
+                <h4 class="store-price">$99</h4>
+
             </div>
         </div>
 
         <div class="col-lg-4">
             <div class="box-element product">
-                <img src="three.jgp"/>
+                <img class="store-image" src="{% static 'images/three.jpg' %}"/>
+                <h6 class = "product-title"><strong>Performance Packages</strong></h6>
+                <button class="btn btn-outline-secondary add-btn">add to cart</button>
+                <a class="btn btn-outline-success" href="#">view</a>
+                <h4 class="store-price">$99</h4>
             </div>
         </div>
 
