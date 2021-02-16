@@ -8,6 +8,7 @@ authors = ["seth mcfeeters <seth.mcfeeters@gmail.com>"]
 python = "^3.8"
 Django = "^3.1.6"
 django-debug-toolbar = "^3.2"
+django-environ = "^0.4.5"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.8.4"
