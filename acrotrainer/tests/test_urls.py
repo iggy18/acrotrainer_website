@@ -2,7 +2,10 @@ from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from acrotrainer.views import store, cart, checkout
 
+#Test urls
+
 class TestUrls(SimpleTestCase):
+
     def test_store_url_is_resolved(self):
         url = reverse('store')
         print(resolve(url))
