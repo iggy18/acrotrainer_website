@@ -13,6 +13,8 @@ pytest = "^6.2.2"
 gunicorn = "^20.0.4"
 psycopg2-binary = "^2.8.6"
 six = "^1.15.0"
+whitenoise = "^5.2.0"
+pytest-django = "^4.1.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.8.4"
