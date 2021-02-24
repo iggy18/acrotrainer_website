@@ -4,37 +4,18 @@
     <h3 class="page-title">Lessons</h3>
 
     <div class="row">
+        {% for product in products %}
         <div class="col-lg-4">
+            <img class="thumbnail" src="{% static 'images/three.jpg' %}">
             <div class="box-element product">
-                <img class="store-image" src="{% static 'images/one.jpg' %}"/>
-                <h6 class = "product-title"><strong>Recorded Classes</strong></h6>
+                <h6 class = "product-title"><strong>{{product.name}}</strong></h6>
+                <hr>
                 <button class="btn btn-outline-secondary add-btn">add to cart</button>
                 <a class="btn btn-outline-success" href="#">view</a>
-                <h4 class="store-price">$99</h4>
+                <h4 style="display: inline-block; float: right"><strong>${{product.price|floatformat:2}}</strong></h4>
             </div>
         </div>
-
-        <div class="col-lg-4">
-            <div class="box-element product">
-                <img class="store-image" src="{% static 'images/two.jpg' %}"/>
-                <h6 class = "product-title"><strong>One on One classes via Skype</strong></h6>
-                <button class="btn btn-outline-secondary add-btn">add to cart</button>
-                <a class="btn btn-outline-success" href="#">view</a>
-                <h4 class="store-price">$99</h4>
-
-            </div>
-        </div>
-
-        <div class="col-lg-4">
-            <div class="box-element product">
-                <img class="store-image" src="{% static 'images/three.jpg' %}"/>
-                <h6 class = "product-title"><strong>Performance Packages</strong></h6>
-                <button class="btn btn-outline-secondary add-btn">add to cart</button>
-                <a class="btn btn-outline-success" href="#">view</a>
-                <h4 class="store-price">$99</h4>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
 
 {% endblock content %}
