@@ -8,6 +8,7 @@ def store(request):
     context = {'products': products}
     return render(request, 'store/store.html', context)
 
+
 def cart(request):
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -30,6 +31,7 @@ def checkout(request):
     context = {'items': items, 'order': order}
     return render(request, 'store/checkout.html', context)
 
+
 def updateItem(request):
     data = json.loads(request.body)
     productId = data['productId']
@@ -38,6 +40,17 @@ def updateItem(request):
     print('product', productId)
 
     customer = request.user.customer
-    product = product.objects.get(id=productId)
+    product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
-    orderItem, created = Order.objects.get_or_create(order=order, product=product)
+    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem. quantity = (orderItem.quantity - 1)
+    orderItem.save()
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+    
+    return JsonResponse('item has been added', safe=False)
