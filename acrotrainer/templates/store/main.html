@@ -47,13 +47,9 @@
         </li>
       </ul>
         <div class="form-inline my-2 my-lg-0">
-          <a href="#" class="btn btn-secondary">
-            Login
-          </a>
-          <a href={% url 'cart' %}>
-            <i class="fas fa fa-shopping-cart fa-3x"></i>
-          </a>
-            <p class="quantity">0</p>
+          <a href="#" class="log btn btn-secondary">Login</a>
+          <a id="cart_icon" href={% url 'cart' %}><i class="fas fa fa-shopping-cart fa-3x"></i></a>
+            <p id="cart-total">{{ cartItems }}</p>
         </div>
     </div>
 </nav>

@@ -8,12 +8,11 @@ body{
 	background-color: #4f5d75ff;
 }
 
-img{
+.thumbnail{
     width:100%;
 }
 
 .store-price{
-	display: inline-block;
 	float: right;
 	margin-right: 10px;
 }
@@ -31,7 +30,8 @@ img{
 .box-element{
 	-webkit-box-shadow: 7px 8px 12px 1px #2d3142ff; 
 	box-shadow: 7px 8px 12px 1px #2d3142ff;
-	padding-bottom: 10px;
+	padding: 12px;
+	border-radius: 8px;
 	background-color: #ffffffff;
 }
 
@@ -68,10 +68,6 @@ nav{
 	text-align: center;
 }
 
-.store-image{
-	border-radius: 25px, 25px, 25px, 25px;
-}
-
 .btn{
 	border-radius: 0;
 }
@@ -84,6 +80,12 @@ nav{
 	width:250px;
 	display: inline-block;
 	padding: 5px;
+}
+
+.form-inline{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .cart-row{
@@ -99,8 +101,6 @@ nav{
 	display: inline-block;
 	font-weight: 700;
 	padding-right:10px;
-	
-
 }
 
 .chg-quantity{

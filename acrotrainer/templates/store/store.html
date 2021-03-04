@@ -6,8 +6,8 @@
     <div class="row">
         {% for product in products %}
         <div class="col-lg-4">
-            <img class="thumbnail" src="{{product.image_handler}}">
             <div class="box-element product">
+            <img class="thumbnail" src="{{product.image_handler}}">
                 <h6 class = "product-title"><strong>{{product.name}}</strong></h6>
                 <hr>
                 <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">add to cart</button>
