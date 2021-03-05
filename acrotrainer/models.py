@@ -36,6 +36,16 @@ class Order(models.Model):
 
     def __str__(self):
         return str(self.id)
+    
+    #hides shipping adress form if all items are digital=True
+    @property
+    def hide_shipping_address(self):
+        shipping = False
+        orderItems = self.orderitem_set.all()
+        for item in orderItems:
+            if item.product.digital == False:
+                shipping = True 
+        return shipping
 
     #calculates totals for all items in cart
     @property
