@@ -70,10 +70,17 @@
     </div>
 	<script type="text/javascript">
 		let shipping = '{{order.hide_shipping_address}}'
+		let total = '{{order.get_cart_total|floatformat:2}}'
 
 		if(shipping == 'False'){
 			console.log('should be hidden')
 			document.getElementById('shipping-info').innerHTML = ''
+		}
+
+		//hide form user is logged in and shipping is false
+		if(shipping == 'False' && user != 'AnonymousUser'){
+			document.getElementById('form-wrapper').classList.add('hidden')
+			document.getElementById('payment-info').classList.remove('hidden')
 		}
 
 		let form = document.getElementById('form')
@@ -85,7 +92,47 @@
 		})
 
 		function submitFormData(){
-			console.log('form button clicked')
+			let userFormData = {
+				'name': null,
+				'email': null,
+				'total': total,
+			}
+
+			let shippingInfo = {
+				'address': null,
+				'city': null,
+				'state': null,
+				'zipcode': null,
+			}
+
+			if(shipping != 'False'){
+				shippingInfo.address = form.address.value
+				shippingInfo.city = form.city.value
+				shippingInfo.state = form.state.value
+				shippingInfo.zipcode = form.zipcode.value
+			}
+
+			if(user == 'AnonymousUser'){
+				userFormData.name = form.name.value
+				userFormData.email = form.email.value
+			}
+
+			let url = '/process_order/'
+			fetch(url, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-CSRFToken':csrftoken,		
+				},
+				body: JSON.stringify({'form': userFormData, 'shipping': shippingInfo})
+			})
+			.then((response) => response.json())
+			.then((data)=> {
+				console.log('got it:', data)
+				alert('payment complete')
+				window.location.href="{% url 'store' %}"
+			})
+
 		}
 		document.getElementById('make-payment').addEventListener('click', function(e){
 			submitFormData()
