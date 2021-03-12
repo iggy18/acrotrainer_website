@@ -44,7 +44,7 @@
         let cart = JSON.parse(getCookie('cart'))
         if(cart == undefined){
           cart = {}
-          console.log('cart was created')
+          console.log('Cart: ', cart)
           document.cookie = 'cart=' + JSON.stringify(cart) + ";domain;path=/"
         }
         console.log('cart: ', cart)
