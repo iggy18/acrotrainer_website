@@ -7,6 +7,7 @@
         <div class="col-lg-6">
             <div class="box-element" id="form-wrapper">
                 <form id="form">
+					{% csrf_token %}
                     <div id="user-info">
                         <div class="form-field">
 							<input required class="form-control" type="text" name="name" placeholder="Name..">
@@ -70,7 +71,7 @@
     </div>
 	<script type="text/javascript">
 		let shipping = '{{order.hide_shipping_address}}'
-		let total = '{{order.get_cart_total|floatformat:2}}'
+		let total = '{{order.get_cart_total}}'
 
 		if(shipping == 'False'){
 			console.log('should be hidden')
@@ -84,6 +85,7 @@
 		}
 
 		let form = document.getElementById('form')
+		csrftoken = form.getElementByTagName('input')[0].value
 		form.addEventListener('submit', function(e){
 			e.preventDefault()
 			console.log('submitted!!!')
