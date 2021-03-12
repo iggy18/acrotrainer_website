@@ -8,6 +8,10 @@ body{
 	background-color: #4f5d75ff;
 }
 
+.navbar-brand{
+	font-size: 3vw;
+}
+
 .thumbnail{
     width:100%;
 }
