@@ -19,9 +19,17 @@ function addCookieItem(productId, action){
     console.log('not signed in')
     if (action === 'add'){
         if (cart[productId] == undefined){
-            cart[productId] ={'quantity':1};
+            cart[productId] = {'quantity':1};
         } else{
             cart[productId]['quantity'] += 1;
+        }
+    }
+    if (action === 'remove'){
+        cart[productId]['quantity'] -= 1
+
+        if(cart[productId]['quantity'] <=0){
+            console.log('removed item')
+            delete cart[productId]
         }
     }
 }
