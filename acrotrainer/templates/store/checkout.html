@@ -85,7 +85,7 @@
 		}
 
 		let form = document.getElementById('form')
-		csrftoken = form.getElementByTagName('input')[0].value
+		csrftoken = form.getElementsByTagName('input')[0].value
 		form.addEventListener('submit', function(e){
 			e.preventDefault()
 			console.log('submitted!!!')
@@ -131,10 +131,12 @@
 			.then((response) => response.json())
 			.then((data)=> {
 				console.log('got it:', data)
-				alert('payment complete')
+				alert('payment complete');
+				console.log('cart')
+				document.cookie ='cart' + JSON.stringify(cart) + ";domain=;path=/"
 				window.location.href="{% url 'store' %}"
+				cart = {}
 			})
-
 		}
 		document.getElementById('make-payment').addEventListener('click', function(e){
 			submitFormData()
