@@ -131,11 +131,11 @@
 			.then((response) => response.json())
 			.then((data)=> {
 				console.log('got it:', data)
-				alert('payment complete');
-				console.log('cart')
-				document.cookie ='cart' + JSON.stringify(cart) + ";domain=;path=/"
-				window.location.href="{% url 'store' %}"
+				alert('PAYMENT ACCEPTED')
 				cart = {}
+				console.log('cart refreshed')
+				document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+				window.location.href="{% url 'store' %}"
 			})
 		}
 		document.getElementById('make-payment').addEventListener('click', function(e){
