@@ -3,10 +3,12 @@ from . models import Customer, Product, Order, OrderItem, ShippingAddress
 
 def cookie_maker(request):
     try:
+        print("try hit")
         cart = json.loads(request.COOKIES['cart'])
     except:
+        print('XXXXXXXXXXXXXX except hit')
         cart = {}
-    cart = json.loads(request.COOKIES['cart'])
+
     items = []
     order = {'get_cart_total':0, 'get_cart_items':0, 'shipping': False}
     cartItems = order['get_cart_items']
