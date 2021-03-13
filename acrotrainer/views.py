@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Customer, Product, Order, OrderItem, ShippingAddress
 from django.http import JsonResponse
+from .cookie_cart import cookie_maker
 import json
 import datetime
 
@@ -11,9 +12,8 @@ def store(request):
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
     else:
-        items = []
-        order = {'get_cart_total':0, 'get_cart_items':0, 'shipping': False}
-        cartItems = order['get_cart_items']
+        cookie_data = cookie_maker(request)
+        cartItems = cookie_data['cartItems']
 
     products = Product.objects.all()
     context = {'products': products, 'cartItems': cartItems}
@@ -27,34 +27,10 @@ def cart(request):
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
     else:
-        try:
-            cart = json.loads(request.COOKIES['cart'])
-        except:
-            cart = {}
-        cart = json.loads(request.COOKIES['cart'])
-        print('cart: ', cart)
-        items = []
-        order = {'get_cart_total':0, 'get_cart_items':0, 'shipping': False}
-        cartItems = order['get_cart_items']
-        for inventory in cart:
-            cartItems += cart[inventory]['quantity']
-            product = Product.objects.get(id=inventory)
-            total = (product.price*cart[inventory]['quantity'])
-            
-            order['get_cart_total'] += total
-            order['get_cart_items'] += cart[inventory]['quantity']
-
-            item = {
-                'product':{
-                    'id':product.id,
-                    'name':product.name,
-                    'price':product.price,
-                    'image_handler': product.image_handler
-                    },
-                'quantity':cart[inventory]['quantity'],
-                'get_total':total,
-                }
-            items.append(item)
+        cookie_data = cookie_maker(request)
+        cartItems = cookie_data['cartItems']
+        order = cookie_data['order']
+        items =cookie_data['items']
 
     context = {'items': items, 'order': order, 'cartItems':cartItems}
     return render(request, 'store/cart.html', context)
@@ -66,9 +42,10 @@ def checkout(request):
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
     else:
-        items = []
-        order = {'get_cart_total':0, 'get_cart_items':0, 'shipping': False}
-        cartItems = order['get_cart_items']
+        cookie_data = cookie_maker(request)
+        cartItems = cookie_data['cartItems']
+        order = cookie_data['order']
+        items =cookie_data['items']
     context = {'items': items, 'order': order, 'cartItems':cartItems}
     return render(request, 'store/checkout.html', context)
 
