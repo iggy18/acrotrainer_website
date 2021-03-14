@@ -8,7 +8,7 @@ https://acrotrainer.herokuapp.com/
 admin can add or delete products with photos they upload.
 
 
-admin can add digital or physical products to page. if product is digital no adress is required or saved to backend. if product requires shipping completed orders are saved to backend with shipping address. 
+admin can add digital or physical products to page. if product is digital no address is required or saved to backend. if product requires shipping completed orders are saved to backend with shipping address. 
 
 
 a logged in user can add items to cart.
