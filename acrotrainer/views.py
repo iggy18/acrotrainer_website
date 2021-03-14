@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Customer, Product, Order, OrderItem, ShippingAddress
 from django.http import JsonResponse
-from .helpers import cookie_maker, cart_data
+from .helpers import cookie_maker, cart_data, guest_order
 import json
 import datetime
 
@@ -60,12 +60,6 @@ def processOrder(request):
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        total = float(data['form']['total'])
-        order.transaction_id = transaction_id
-
-        if total == order.get_cart_total:
-            order.complete = True
-        order.save()
 
         if order.hide_shipping_address == True:
             ShippingAddress.objects.create(
@@ -77,5 +71,23 @@ def processOrder(request):
                 zipcode=data['shipping']['zipcode'],
             ) 
     else:
-        print('user not authenticated')
+        customer, order = guest_order(request, data)
+
+    total = float(data['form']['total'])
+    order.transaction_id = transaction_id
+
+    if total == float(order.get_cart_total):
+        order.complete = True
+    order.save()
+
+    if order.hide_shipping_address == True:
+        ShippingAddress.objects.create(
+            customer = customer,
+            order=order,
+            address=data['shipping']['address'],
+            city=data['shipping']['city'],
+            state=data['shipping']['state'],
+            zipcode=data['shipping']['zipcode'],
+        ) 
+
     return JsonResponse('Payment complete!', safe=False)
