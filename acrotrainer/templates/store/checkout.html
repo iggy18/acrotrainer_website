@@ -44,12 +44,7 @@
             <br>
 			<div class="box-element hidden" id="payment-info">
 				<small>Paypal Options</small>
-
-				<div id="paypal-button-container">
-				
-				</div>
-
-				<button id='make-payment' class="btn btn-success btn-block">Make payment</button>
+				<div id="paypal-button-container"></div>
 			</div>
         </div>
 
@@ -74,6 +69,37 @@
         </div>
 
     </div>
+
+	<!--PAYPAL API-->
+	<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+
+	<script>
+		let total_purchase = '{{order.get_cart_total}}'
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: parseFloat(total_purchase).toFixed(2)
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    submitFormData()
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+
 	<script type="text/javascript">
 		let shipping = '{{order.hide_shipping_address}}'
 		let total = '{{order.get_cart_total}}'
@@ -143,9 +169,11 @@
 				window.location.href="{% url 'store' %}"
 			})
 		}
+
 		document.getElementById('make-payment').addEventListener('click', function(e){
 			submitFormData()
 		})
+		
 		
 	</script>	
 	{% endblock content %}
