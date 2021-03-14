@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Customer, Product, Order, OrderItem, ShippingAddress
 
+admin.site.site_header = 'Acrotrainer Admin View'
 admin.site.register(Customer)
 admin.site.register(Product)
 admin.site.register(Order)
