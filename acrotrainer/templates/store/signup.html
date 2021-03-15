@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="wrapper fadeInDown">
+<div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+        <h3>Sign up</h3>
+    </div>
+
+    <!-- Login Form -->
+    <form>
+    <input type="text" id="name" class="fadeIn second" name="name" placeholder="Enter your name">
+    <input type="text" id="username" class="fadeIn second" name="user_name" placeholder="Enter your email">
+    <input type="text" id="password" class="fadeIn third" name="login" placeholder="Choose a password">
+    <input type="text" id="password_confirm" class="fadeIn third" name="login" placeholder="Confirm password">
+    <input type="submit" class="fadeIn fourth" value="submit">
+    </form>
+
+</div>
+</div>
+
+{% endblock content %}

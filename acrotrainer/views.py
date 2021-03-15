@@ -5,6 +5,22 @@ from .helpers import cookie_maker, cart_data, guest_order
 import json
 import datetime
 
+def sign_up(request):
+    data = cart_data(request)
+    cartItems = data['cartItems']
+    order = data['order']
+    items =data['items']
+    context = {'items': items, 'order': order, 'cartItems':cartItems} 
+    return render(request, 'store/signup.html', context)
+
+def login(request):
+    data = cart_data(request)
+    cartItems = data['cartItems']
+    order = data['order']
+    items =data['items']
+    context = {'items': items, 'order': order, 'cartItems':cartItems}
+    return render(request, 'store/login.html', context)
+
 def store(request):
     data = cart_data(request)
     cartItems = data['cartItems']
