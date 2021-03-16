@@ -8,6 +8,25 @@ body{
 	background-color: #4f5d75ff;
 }
 
+.container{
+	width: 100%;
+}
+
+.masthead {
+	width: 100%;
+	height: 120vh;
+	min-height: 500px;
+	background-image: url('/static/images/heroimage.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.hero-header{
+	color: white;
+}
+
 .navbar-brand{
 	font-size: 3vw;
 }

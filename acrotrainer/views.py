@@ -5,6 +5,14 @@ from .helpers import cookie_maker, cart_data, guest_order
 import json
 import datetime
 
+def welcome(request):
+    data = cart_data(request)
+    cartItems = data['cartItems']
+    order = data['order']
+    items =data['items']
+    context = {'items': items, 'order': order, 'cartItems':cartItems}
+    return render(request, 'store/welcome.html', context)
+
 def sign_up(request):
     data = cart_data(request)
     cartItems = data['cartItems']
@@ -107,3 +115,7 @@ def processOrder(request):
         ) 
 
     return JsonResponse('Payment complete!', safe=False)
+
+def error_404(request, exception):
+    data = {}
+    return render(request, '404.html', data)
