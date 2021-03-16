@@ -11,3 +11,4 @@ urlpatterns =[
     path('update_item/',views.updateItem, name='update_item'),
 ]
 
+handler404 = views.handler404
