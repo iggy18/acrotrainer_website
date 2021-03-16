@@ -116,6 +116,5 @@ def processOrder(request):
 
     return JsonResponse('Payment complete!', safe=False)
 
-def error_404(request, exception):
-    data = {}
-    return render(request, '404.html', data)
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
