@@ -67,7 +67,12 @@
         </li>
       </ul>
         <div class="form-inline my-2 my-lg-0">
+        {% if user.is_authenticated %}
+          <a href="{% url 'account_logout' %}" class="log btn btn-secondary">Log out</a>
+        {% endif %}
+        {% if not user.is_authenticated %}
           <a href="{% url 'account_login' %}" class="log btn btn-secondary">Login</a>
+        {% endif %}
           <a id="cart_icon" href={% url 'cart' %}><i class="fas fa fa-shopping-cart fa-3x"></i></a>
             <p id="cart-total">{{ cartItems }}</p>
         </div>
