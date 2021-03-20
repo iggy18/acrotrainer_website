@@ -8,6 +8,11 @@ https://acrotrainer.herokuapp.com/
 admin can add or delete products with photos they upload.
 
 
+a user can sign up and a verification email is sent out to verify account.
+
+a user can log in and log out change email adress and reset password.
+
+
 admin can add digital or physical products to page. if product is digital no address is required or saved to backend. if product requires shipping completed orders are saved to backend with shipping address. 
 
 
@@ -26,9 +31,8 @@ guest has same capabilities as logged in user.
 once order is completed cart is cleared.
 
 
-a user can checkout with paypal.
+a user can checkout with paypal
 
-paypal button does not show up in demo. it is hidden until I can get an SSL certificate for the site.
 
 
 ### initial setup:
