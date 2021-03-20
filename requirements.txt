@@ -2,6 +2,7 @@ asgiref==3.3.1; python_version >= "3.6"
 atomicwrites==1.4.0; python_version >= "3.6" and python_full_version < "3.0.0" and sys_platform == "win32" or sys_platform == "win32" and python_version >= "3.6" and python_full_version >= "3.4.0"
 attrs==20.3.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
 colorama==0.4.4; python_version >= "3.6" and python_full_version < "3.0.0" and sys_platform == "win32" or sys_platform == "win32" and python_version >= "3.6" and python_full_version >= "3.5.0"
+django-crispy-forms==1.11.1; python_version >= "3.5"
 django-debug-toolbar==3.2; python_version >= "3.6"
 django-environ==0.4.5
 django==3.1.6; python_version >= "3.6"

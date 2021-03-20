@@ -1,6 +1,7 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
+{% load crispy_forms_tags %}
 <div class="wrapper fadeInDown">
 <div id="formContent">
     <!-- Tabs Titles -->
@@ -11,14 +12,16 @@
     </div>
 
     <!-- Login Form -->
-    <form>
-    <input type="text" id="name" class="fadeIn second" name="name" placeholder="Enter your name">
-    <input type="text" id="username" class="fadeIn second" name="user_name" placeholder="Enter your email">
-    <input type="text" id="password" class="fadeIn third" name="login" placeholder="Choose a password">
-    <input type="text" id="password_confirm" class="fadeIn third" name="login" placeholder="Confirm password">
-    <input type="submit" class="fadeIn fourth" value="submit">
+    <form method="POST">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" class="fadeIn fourth" value="submit">
     </form>
 
+    <div id="formFooter">
+    <a class="underlineHover" href={% url "login"%}>Already have an account? Sign in.</a>
+    </div>
+    
 </div>
 </div>
 
