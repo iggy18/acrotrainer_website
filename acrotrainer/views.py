@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from .models import Customer, Product, Order, OrderItem, ShippingAddress
 from django.http import JsonResponse
 from .helpers import cookie_maker, cart_data, guest_order
 import json
 import datetime
+
 
 def welcome(request):
     data = cart_data(request)
@@ -13,21 +15,6 @@ def welcome(request):
     context = {'items': items, 'order': order, 'cartItems':cartItems}
     return render(request, 'store/welcome.html', context)
 
-def sign_up(request):
-    data = cart_data(request)
-    cartItems = data['cartItems']
-    order = data['order']
-    items =data['items']
-    context = {'items': items, 'order': order, 'cartItems':cartItems} 
-    return render(request, 'store/signup.html', context)
-
-def login(request):
-    data = cart_data(request)
-    cartItems = data['cartItems']
-    order = data['order']
-    items =data['items']
-    context = {'items': items, 'order': order, 'cartItems':cartItems}
-    return render(request, 'store/login.html', context)
 
 def store(request):
     data = cart_data(request)
@@ -44,6 +31,7 @@ def cart(request):
     items =data['items']
     context = {'items': items, 'order': order, 'cartItems':cartItems}
     return render(request, 'store/cart.html', context)
+
 
 def checkout(request):
     data = cart_data(request)
@@ -76,6 +64,7 @@ def updateItem(request):
         orderItem.delete()
     
     return JsonResponse('item has been added', safe=False)
+
 
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
@@ -113,8 +102,9 @@ def processOrder(request):
             state=data['shipping']['state'],
             zipcode=data['shipping']['zipcode'],
         ) 
-
     return JsonResponse('Payment complete!', safe=False)
+
 
 def handler404(request, exception):
     return render(request, '404.html', status=404)
+
