@@ -6,7 +6,6 @@ from .helpers import cookie_maker, cart_data, guest_order
 import json
 import datetime
 
-
 def welcome(request):
     data = cart_data(request)
     cartItems = data['cartItems']
