@@ -50,7 +50,7 @@ a user can checkout with paypal
 ![check out with paypal](./assets/paypalcheckout.jpg)
 
 
-paypal payment success was tested in paypals sandbox. the correct value in the cart is processed and the money is sent from the customer to the buyer.
+paypal payment success was tested in paypals sandbox. the correct value in the cart is processed and the money is sent from the customer to the business owner.
 
 
 
