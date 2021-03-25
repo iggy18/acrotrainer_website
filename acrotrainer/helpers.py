@@ -53,8 +53,6 @@ def cart_data(request):
     return {'cartItems': cartItems, 'order':order, 'items': items}
 
 def guest_order(request, data):
-    print('user not authenticated')
-    print('COOKIES:', request.COOKIES)
     name = data['form']['name']
     email = data['form']['email']
     cookie_data = cookie_maker(request)
