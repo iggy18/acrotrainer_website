@@ -3,10 +3,8 @@ from . models import Customer, Product, Order, OrderItem, ShippingAddress
 
 def cookie_maker(request):
     try:
-        print("try hit")
         cart = json.loads(request.COOKIES['cart'])
     except:
-        print('XXXXXXXXXXXXXX except hit')
         cart = {}
 
     items = []
@@ -40,7 +38,8 @@ def cookie_maker(request):
     return {'cartItems': cartItems, 'order':order, 'items':items}
 
 def cart_data(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated: 
+        new_customer, created = Customer.objects.get_or_create(user=request.user, name=request.user.username, email=request.user.email)
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()

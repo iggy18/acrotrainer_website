@@ -3,6 +3,7 @@ from django.urls import reverse
 from .models import Customer, Product, Order, OrderItem, ShippingAddress
 from django.http import JsonResponse
 from .helpers import cookie_maker, cart_data, guest_order
+from allauth.account.views import SignupView
 import json
 import datetime
 
@@ -47,7 +48,6 @@ def updateItem(request):
     action = data['action']
     print('action', action)
     print('product', productId)
-
     customer = request.user.customer
     product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
