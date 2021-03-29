@@ -66,6 +66,10 @@ mandarin: #ef8354ff; */
 		bounce 2s infinite;
 }
 
+.justfadein{
+	animation: JustFadeIn 1.5s ease-in-out both;
+}
+
 .swoop-left{
 	animation: FadeInLeft 2.5s ease-in-out;
 }

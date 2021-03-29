@@ -38,12 +38,13 @@ def cookie_maker(request):
     return {'cartItems': cartItems, 'order':order, 'items':items}
 
 def cart_data(request):
-    if request.user.is_authenticated: 
-        new_customer, created = Customer.objects.get_or_create(user=request.user, name=request.user.username, email=request.user.email)
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        items = order.orderitem_set.all()
-        cartItems = order.get_cart_items
+    if request.user.is_authenticated:
+            if not request.user.is_superuser:
+                new_customer, created = Customer.objects.get_or_create(user=request.user, name=request.user.username, email=request.user.email)
+            customer = request.user.customer
+            order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            items = order.orderitem_set.all()
+            cartItems = order.get_cart_items
     else:
         cookie_data = cookie_maker(request)
         cartItems = cookie_data['cartItems']

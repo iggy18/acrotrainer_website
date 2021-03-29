@@ -12,7 +12,7 @@
                 <h6 class = "product-title"><strong>{{product.name}}</strong></h6>
                 <hr>
                 <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">add to cart</button>
-                <a class="btn btn-outline-success" href="#">view</a>
+                <a class="btn btn-outline-success" href="{% url 'detail' product.pk %}">details</a>
                 <h4 style="display: inline-block; float: right"><strong>${{product.price|floatformat:2}}</strong></h4>
             </div>
         </div>
