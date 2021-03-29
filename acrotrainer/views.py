@@ -4,6 +4,7 @@ from .models import Customer, Product, Order, OrderItem, ShippingAddress
 from django.http import JsonResponse
 from .helpers import cookie_maker, cart_data, guest_order
 from allauth.account.views import SignupView
+from django.views.generic import DetailView
 import json
 import datetime
 
@@ -22,6 +23,12 @@ def store(request):
     products = Product.objects.all()
     context = {'products': products, 'cartItems': cartItems}
     return render(request, 'store/store.html', context)
+
+
+class DetailView(DetailView):
+    template_name = 'store/detail.html'
+    model = Product
+
 
 
 def cart(request):
