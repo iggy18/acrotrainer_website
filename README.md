@@ -1,4 +1,5 @@
-# this is a website I am prototyping for a friends Business. 
+# this is a website I am making for a friends Business.
+this is a demo, the actual site will have an SSL certificate and a live paypal setup
 
 ## want to check out the site?
 check the current state of the site.
