@@ -68,6 +68,7 @@ mandarin: #ef8354ff; */
 
 .justfadein{
 	animation: JustFadeIn 1.5s ease-in-out both;
+	font-size: 5vw;
 }
 
 .swoop-left{
@@ -217,6 +218,13 @@ nav{
 	display: none!important;
 }
 
-#logo{
-	width: 16vw;
+.text-header{
+	background-image: url('/static/images/title.jpg');
+	background-size: cover;
+	height:20vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 15px;
+	color: white;
 }

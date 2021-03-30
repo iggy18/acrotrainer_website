@@ -1,13 +1,12 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-    <section class="container">
-        <h1 class="text-center bg-white">{{product.name}}</h1>
+        <div class="text-header">
+            <h1 class="text-center justfadein detail-header-text">{{product.name}}</h1>
+        </div>
         <img class="img-fluid" src="{{product.image_handler}}">
         <div class="container">
             <p>{{product.detail}}</p>
         <div>
-        <p class="text-center JustFadeIn"><strong>{{product.name}}: Available for ${{product.price}}</strong></p>
-        
-    </section>
+        <p class="text-center"><strong>{{product.name}}: Available for ${{product.price}}</strong></p>
 {% endblock content %}

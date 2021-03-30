@@ -30,7 +30,6 @@ class DetailView(DetailView):
     model = Product
 
 
-
 def cart(request):
     data = cart_data(request)
     cartItems = data['cartItems']
